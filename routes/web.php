@@ -24,3 +24,4 @@ Route::get('/MovieView/{id}','App\Http\Controllers\MovieListController@list');
 Route::post('/MovieView','App\Http\Controllers\MovieListController@search');
 Route::get('/upload',function(){return view('upload');});
 Route::post('/upload','App\Http\Controllers\MovieListController@upload');
+Route::get('/forgetPassword',function(){return view('ForgetPassword');});

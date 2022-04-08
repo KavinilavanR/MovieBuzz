@@ -45,15 +45,15 @@ class MovieListController extends Controller
     public function list(Request $req,$id)
     {   
        $movie=MovieDetail::where('MovieName','like','%'.$req->input('search').'%')->get();
-        if($id==1)
-        {
-            return view('MovieView',[
-                'search'=>1,
+        if($id==1) {
+            return view('MovieView', [
+                'search' => 1,
                 'movies'=>$movie,
                 'access'=>1
             ]);
 
         }
+
         return view('MovieView',[
             'search'=>1,
             'movies'=>$movie

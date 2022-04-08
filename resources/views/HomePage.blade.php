@@ -32,7 +32,7 @@
         <p>Password</p>
         <input type="password" name="Pass" id="passwd">
         </div>
-        <a href="#">forget Password</a>
+        <a href="/forgetPassword">forget Password</a>
       </div>
       <button class="btn btn-bgless"type ='submit'>LOGIN for the Experience&nbsp;&nbsp;<i class="fa-solid fa-arrow-right-to-bracket"></i></button>
     </form>
