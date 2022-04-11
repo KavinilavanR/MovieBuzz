@@ -19,26 +19,26 @@
       </p>
       
       <div class="forms">
-      <form action="/forgetPassword" method='post' >
+      <form action="/changePassword/{{$id}}" method='post' >
         @csrf
       <div class="login-form">
         <div class="input-grp">
-        <p>Username</p>
-        <input type="text" name="Uname" id="uname">
+        <p>New Password</p>
+        <input type="password" name="Npass" id="uname">
         </div>
         <div class="input-grp">
-        <p>Date Of Birth</p>
-        <input type="date" name="DOB" id="DOB">
+        <p>Confirm New Password</p>
+        <input type="password" name="Cpass" id="passwd">
         </div>
        
       </div>
         
   </div>
-      <button type='submit' class="btn btn-bgless">Verify&nbsp;&nbsp;<i class="fa-regular fa-user"></i></button>
+      <button type='submit' class="btn btn-bgless">submit&nbsp;&nbsp;</button>
     </form>
-    @if(isset($notVerified))
-      <p>Date of birth and username doesn't match</p>
-    @endif  
-    </div>
+    @if (isset($failure))
+    <p>new password and confirm password are different</p>
+    @endif
+    </div>   
 </body>
 </html>

@@ -48,6 +48,9 @@
 @if(isset($success))
 <script>alert('registered successful');</script>   
 @endif 
+@if(isset($passwordChanged))
+<script>alert('password changed successfully');</script>   
+@endif 
 
 
 </body>

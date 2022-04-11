@@ -26,7 +26,11 @@ class MovieDetail extends Model
         $movie->save();
         
         $movieList=MovieDetail::where('MovieName',$req->input('Mname'))->first();
-
+        $file=$req->file('myfile')->store('movies');
+       
+            $FileFrom="/home/zoomrx/application/MovieBuzz/storage/app/".$file;
+           $FileTo= "/home/zoomrx/application/MovieBuzz/public/images/".$movieList->Id.".jpg";
+            rename($FileFrom,$FileTo);
         $language=$req->input('language');
         
         foreach ($language as $l)
@@ -43,7 +47,7 @@ class MovieDetail extends Model
 
     public function ShowMovie($id)
     {
-        $movie=MovieDetail::where('Id',$id)->first();
+            $movie=MovieDetail::where('Id',$id)->first();
       
             $users = DB::table('LanguageMovie')
             ->join('MovieDetails', 'LanguageMovie.MovieId', '=', 'MovieDetails.Id')

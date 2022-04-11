@@ -18,10 +18,24 @@ Route::post('/login','App\Http\Controllers\LoginController@index');
 Route::get('/register', function () {return view('Register');});
 Route::post('/register','App\Http\Controllers\RegisterController@index');
 Route::get('/movies',function(){return view('MoviesList');});
+
 Route::post('/movies','App\Http\Controllers\MovieListController@create');
 Route::get('/movies/{id}','App\Http\Controllers\MovieListController@view');
-Route::get('/MovieView/{id}','App\Http\Controllers\MovieListController@list');
+
+//Route::get('/MovieView/{id}','App\Http\Controllers\MovieListController@list');
 Route::post('/MovieView','App\Http\Controllers\MovieListController@search');
+
 Route::get('/upload',function(){return view('upload');});
 Route::post('/upload','App\Http\Controllers\MovieListController@upload');
+
 Route::get('/forgetPassword',function(){return view('ForgetPassword');});
+Route::post('/forgetPassword','App\Http\Controllers\ForgetPasswordController@index');
+
+Route::get('changePassword/{id}', function($id) {
+    return view('ChangePassword',[
+        'id' => $id
+    ]);
+});
+Route::post('changePassword/{id}', 'App\Http\Controllers\ChangePasswordController@index');
+
+Route::get('/addMovie',function(){return view('AddMovie');});

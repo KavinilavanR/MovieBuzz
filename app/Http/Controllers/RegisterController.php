@@ -7,18 +7,27 @@ use App\Models\MovieUsers;
 use Illuminate\Support\Facades\Crypt;
 class RegisterController extends Controller
 {
-    public function index(Request $req)
-    {
+
+   /**
+     * Function to get the user details for registration
+     * @param string Request from user through request form
+     * @return  redirect to login page with alerts
+     **/
+    public function index(Request $req) {
       
-        $user= MovieUsers::Register($req); 
-        if ($user=="inserted successfully"){
-            return view('HomePage',['success'=>1]);
+        $user = MovieUsers::Register($req); 
+        
+        if ( $user == "inserted successfully") {
+            return view('HomePage', [
+                'success' => 1 
+            ]);
         }
-        return view('Register',[
-            'exception'=>$user
+        
+        return view('Register', [
+            'exception' => $user
         ]);
         
 
-        // $user->name=$req->input()
+       
     }
 }

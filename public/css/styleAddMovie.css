@@ -1,0 +1,19 @@
+.add form{
+    display: flex;
+    flex-direction: column;
+    gap:25px; 
+    width: 60%;
+    color:white;
+}
+body{
+    background-color: #e73a37;
+}
+textarea{
+    border-radius: 5px;
+}
+ input{
+     border:none;
+    border-bottom:white 2px solid ;
+    background: transparent;
+
+}

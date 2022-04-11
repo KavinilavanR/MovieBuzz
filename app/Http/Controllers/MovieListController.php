@@ -9,13 +9,18 @@ use App\Models\MovieDetail;
 use App\Models\LanguageMovie;
 class MovieListController extends Controller
 {
+     /**
+     * Function to get the login details
+     * @param string Request from user
+     * @return  movie list view page.
+     **/
     public function index(){
         
-        $movieList=MovieDetail::all();
+        $movieList = MovieDetail::all();
         
-        foreach ($movieList as $movie)
+        foreach ( $movieList as $movie )
                 {
-                    echo "$movie->Cast";
+                    echo " $movie->Cast ";
                 }
 
 
@@ -39,7 +44,10 @@ class MovieListController extends Controller
     
     public function upload(Request $req)
         {
-            print_r($req->file('myfile')->store('movies'));
+            $file=$req->file('myfile')->store('movies');
+            $file="/home/zoomrx/application/MovieBuzz/storage/app/".$file;
+            echo"$file hi";
+            rename($file, "/home/zoomrx/application/MovieBuzz/public/images/.jpg");
         }
 
     public function list(Request $req,$id)
