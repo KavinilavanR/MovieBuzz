@@ -15,7 +15,7 @@ class MovieUsers extends Model
     protected $guarded=[];
     
 
-   /**
+    /**
      * Function to get the login details from LoginController
      * @param string Request from user
      * @return  user object as json /exception message

@@ -14,13 +14,13 @@
 <body>
   <div class="container">
     <div class="dp-img">
-      <img src="./../images/{{$movie->Id}}.jpg" alt="x">
+      <img src="./../images/{{$movie->id}}.jpg" alt="x">
     </div>
     <div class="vl"></div>
     <div class="description">
       <div class="description-unit">
         <p class="lead">Movie Name</p>
-        <p class="value">{{$movie->MovieName}}</p>
+        <p class="value">{{$movie->name}}</p>
       </div>
       <div class="description-unit">
         <p class="lead">Language(s)</p>
@@ -28,15 +28,15 @@
       </div>
       <div class="description-unit">
         <p class="lead">Duration</p>
-        <p class="value">{{$movie->Duration}}</p>
+        <p class="value">{{$movie->duration}}</p>
       </div>
       <div class="description-unit">
         <p class="lead">Cast 'N' Crew</p>
-        <p class="value">{{$movie->Cast_n_Crew}}</p>
+        <p class="value">{{$movie->cast_n_crew}}</p>
       </div>
       <div class="description-unit">
         <p class="lead">Release Date</p>
-        <p class="value">{{$movie->ReleaseDate}}</p>
+        <p class="value">{{$movie->release_date}}</p>
       </div>
       
     </div>

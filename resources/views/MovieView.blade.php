@@ -19,15 +19,39 @@
     <button type='submit'><i class="fa-solid fa-magnifying-glass"></i></button>
     </form>
    
-    <a href=""><i class="fa-solid fa-filter"></i></a>
+   
+  
+<div class="dropdown">
+  <button class="dropbtn"><i class="fa-solid fa-filter"></i></button>
+  <div class="dropdown-content">
+   <form action="/filterMovie" method='post'>
+    @csrf
+  <input type="checkbox" id="vehicle1" name="language[]"value="1">
+  English<br>
+  <input type="checkbox" id="vehicle2" name="language[]" value="4">
+   Tamil<br>
+  <input type="checkbox" id="vehicle3" name="language[]" value="3">
+  Telugu<br>
+  <input type="checkbox" id="vehicle3" name="language[]" value="5">
+  Hindi<br>
+  <input type="checkbox" id="vehicle3" name="language[]" value="2">
+   Malayalam<br><br>
+  <button type="submit">Apply</button>
+</form>
+  </div>
+</div>
+
+  
+  
+  
   </div>
   <div class="container">
     @if(isset($search))
         @foreach($movies as $movie)
-        <a href='/movies/{{$movie->Id}}'>
+        <a href='/movies/{{$movie->id}}'>
           <div class="movie">
-           <img src="./../images/{{$movie->Id}}.jpg" alt="x">
-            <div class="movie-name">{{$movie->MovieName}}</div>
+           <img src="./../images/{{$movie->id}}.jpg" alt="x">
+            <div class="movie-name">{{$movie->name}}</div>
           </div></a>
           @endforeach
 
@@ -38,7 +62,7 @@
   <div class='links'>
   <a href='/addMovie'>Add a Movie &nbsp;<i class="fa-solid fa-plus"></i></a>
   <a href='/editMovie'>edit a Movie &nbsp;<i class="fa-solid fa-pencil"></i></a>
-  <a href='/delMovie'>delete a Movie &nbsp;<i class="fa-solid fa-remove"></i></a>
+  <a href='/deleteMovie'>delete a Movie &nbsp;<i class="fa-solid fa-remove"></i></a>
   <a href='/adminAccess'>Admin Access &nbsp;<i class="fa-solid fa-unlock"></i></a>
     </div>
   @endif

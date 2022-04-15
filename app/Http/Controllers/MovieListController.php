@@ -52,7 +52,7 @@ class MovieListController extends Controller
 
     public function list(Request $req,$id)
     {   
-       $movie=MovieDetail::where('MovieName','like','%'.$req->input('search').'%')->get();
+       $movie=MovieDetail::where('name','like','%'.$req->input('search').'%')->get();
         if($id==1) {
             return view('MovieView', [
                 'search' => 1,
@@ -70,7 +70,7 @@ class MovieListController extends Controller
     }    
     public function search(Request $req)
     {
-        $movie=MovieDetail::where('MovieName','like','%'.$req->input('search').'%')->get();
+        $movie=MovieDetail::where('name','like','%'.$req->input('search').'%')->get();
         return view('MovieView',[
             'search'=>1,
             'movies'=>$movie

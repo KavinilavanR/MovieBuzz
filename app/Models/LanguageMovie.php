@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class LanguageMovie extends Model
 {
     use HasFactory;
-    protected $table='LanguageMovie';
-    protected $primaryKey='Id';
+    protected $table='languages_movies';
+    protected $primaryKey='id';
     public $timestamps = false;
 }
