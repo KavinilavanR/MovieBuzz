@@ -19,7 +19,7 @@ class EditMovieController extends Controller
 
     public function edit($id) {
 
-        $movie = MovieDetail::display($id);
+        $movie = MovieDetail::showMovie($id);
 
         return view('EditSingleMovie', [
             'movie' => $movie
