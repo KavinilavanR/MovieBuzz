@@ -20,8 +20,7 @@ class MovieDetail extends Model
      * @param string Request from user
      * @return  status message(success/failure)
      **/
-    public function InsertMovie(Request $req)
-    {
+    public function InsertMovie(Request $req) {
 
         $movie = new MovieDetail();
         $movie->name = $req->input('Mname');
@@ -55,8 +54,7 @@ class MovieDetail extends Model
      * @param string id from request url
      * @return  movie details array
      **/
-    public function ShowMovie($id)
-    {
+    public function ShowMovie($id) {
 
         $movie = MovieDetail::where('id', $id)->first();
 
@@ -78,8 +76,7 @@ class MovieDetail extends Model
      * 
      **/
 
-    public function updateMovie(Request $req, $id)
-    {
+    public function updateMovie(Request $req, $id) {
 
         $movie = MovieDetail::find($id);
 
@@ -118,8 +115,7 @@ class MovieDetail extends Model
         }
     }
 
-    public function filter(Request $req)
-    {
+    public function filter(Request $req) {
 
         $language = $req->input('language');
         $movieIds = LanguageMovie::whereIn('language_id', $language)->pluck('movie_id')->toArray();

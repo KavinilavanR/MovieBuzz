@@ -38,8 +38,7 @@ class MovieUsers extends Model
      * @param string Request from user through request form
      * @return  return  a string indicating the result
      **/
-    public function Register(Request $req)
-    {
+    public function Register(Request $req) {
 
         $userCheck = MovieUsers::where('name', $req->input('Uname'))->first();
 
@@ -63,8 +62,7 @@ class MovieUsers extends Model
      * @param string Request from user through request form
      * @return  return  a string indicating the result
      **/
-    public function forgetPassword(Request $req)
-    {
+    public function forgetPassword(Request $req) {
 
         $user = MovieUsers::where('name', $req->input('Uname'))->first();
 
@@ -80,8 +78,7 @@ class MovieUsers extends Model
      * @return  nothing
      **/
 
-    public function changePassword(Request $req, $id)
-    {
+    public function changePassword(Request $req, $id) {
 
         $user = MovieUsers::find($id);
         $user->password = Crypt::encryptString($req->input('Npass'));

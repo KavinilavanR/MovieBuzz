@@ -11,24 +11,20 @@ use App\Models\LanguageMovie;
 class MovieListController extends Controller
 {
     /**
-     * Function to get the login details
-     * @param string Request from user
-     * @return  movie list view page.
+     * Function to insert a new movie
+     * @param string movie details as request from user
+     * @return  nothing
      **/
-    public function index() {
-
-        $movieList = MovieDetail::all();
-
-        foreach ($movieList as $movie) {
-            echo " $movie->Cast ";
-        }
-    }
-
     public function create(Request $req) {
 
         $movie = MovieDetail::InsertMovie($req);
-        echo "$movie";
+       
     }
+     /**
+     * Function to display description of a movie
+     * @param string movie id
+     * @return  return movie description in moviedescription view page
+     **/
 
     public function view($id) {
         $movie = MovieDetail::ShowMovie($id);
@@ -36,24 +32,11 @@ class MovieListController extends Controller
         return view('MovieDescription', ['movie' => $movie]);
     }
 
-
-
-
-    public function list(Request $req, $id) {
-        $movie = MovieDetail::where('name', 'like', '%' . $req->input('search') . '%')->get();
-        if ($id == 1) {
-            return view('MovieView', [
-                'search' => 1,
-                'movies' => $movie,
-                'access' => 1
-            ]);
-        }
-
-        return view('MovieView', [
-            'search' => 1,
-            'movies' => $movie
-        ]);
-    }
+     /**
+     * Function to display list of  movies based search filter
+     * @param string nsearch as a request from user
+     * @return  return movieview page based on applied search filters
+     **/
     public function search(Request $req) {
         $movie = MovieDetail::where('name', 'like', '%' . $req->input('search') . '%')->get();
         return view('MovieView', [

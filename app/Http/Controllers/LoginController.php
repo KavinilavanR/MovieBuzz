@@ -39,7 +39,9 @@ class LoginController extends Controller
         'movies' => $movies,
         'search' => 1
       ]);
-    } else {
+    } 
+    
+    else {
       return view('MovieView', [
         'movies' => $movies,
         'search' => 1
