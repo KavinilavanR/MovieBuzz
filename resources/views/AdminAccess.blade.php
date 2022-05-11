@@ -40,6 +40,3 @@
 
 </html>
 
-{{-- @if (isset($del))
-    <script>alert("deleted");</script>
-    @endif --}}

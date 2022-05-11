@@ -27,11 +27,11 @@
                 <div class="login-form">
                     <div class="input-grp">
                         <p>Username</p>
-                        <input type="text" name="Uname" id="uname">
+                        <input type="text" name="name" id="uname">
                     </div>
                     <div class="input-grp">
                         <p>Password</p>
-                        <input type="password" name="Pass" id="passwd">
+                        <input type="password" name="pass" id="passwd">
                     </div>
                     <a href="/forgetPassword">forget Password</a>
                 </div>

@@ -2,33 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\MovieDetail;
+use Illuminate\Http\Request;
+
 
 class EditMovieController extends Controller
 {
-     /**
+    /**
      * Function to display all movies
      * @param string null
-     * @return  return movielist in edit movie view page
+     * @return return movielist in edit movie view page
      **/
-    public function index() {
-
+    public function index()
+    {
         $movies = MovieDetail::all();
-        
+
         return view('EditMovie', [
             'movies' => $movies
 
         ]);
     }
 
-     /**
-     * Function to description of a  movie(editable)
+    /**
+     * Function to provide description of a  movie(editable)
      * @param string movie id
-     * @return  return movielist in deletemovie view page
+     * @return return movielist in deletemovie view page
      **/
-    public function edit($id) {
-
+    public function edit($id)
+    {
         $movie = MovieDetail::showMovie($id);
 
         return view('EditSingleMovie', [
@@ -36,13 +37,13 @@ class EditMovieController extends Controller
         ]);
     }
 
-     /**
+    /**
      * Function to update changes on a particular movie
      * @param string request from user ,movie id
-     * @return nothing
+     * @return null
      **/
-    public function update(Request $req, $id) {
-
+    public function update(Request $req, $id)
+    {
         $movie = MovieDetail::updateMovie($req, $id);
     }
 }

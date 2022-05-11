@@ -25,11 +25,11 @@
                 <div class="login-form">
                     <div class="input-grp">
                         <p>New Password</p>
-                        <input type="password" name="Npass" id="uname">
+                        <input type="password" name="n_pass" id="uname">
                     </div>
                     <div class="input-grp">
                         <p>Confirm New Password</p>
-                        <input type="password" name="Cpass" id="passwd">
+                        <input type="password" name="c_pass" id="passwd">
                     </div>
 
                 </div>

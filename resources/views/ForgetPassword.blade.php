@@ -25,11 +25,11 @@
                 <div class="login-form">
                     <div class="input-grp">
                         <p>Username</p>
-                        <input type="text" name="Uname" id="uname">
+                        <input type="text" name="name" id="uname">
                     </div>
                     <div class="input-grp">
                         <p>Date Of Birth</p>
-                        <input type="date" name="DOB" id="DOB">
+                        <input type="date" name="dob" id="DOB">
                     </div>
 
                 </div>

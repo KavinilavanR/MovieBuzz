@@ -7,34 +7,41 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class MovieDetail extends Model
 {
     use HasFactory;
+
     protected $table = 'movies';
+
     protected $primaryKey = 'id';
+
     public $timestamps = false;
 
+    const FILE_IN = "/home/zoomrx/application/MovieBuzz/storage/app/";
+    const FILE_OUT = "/home/zoomrx/application/MovieBuzz/public/images/";
     /**
      * Function to get the request for new movie details from MovieListController@create
      * @param string Request from user
-     * @return  status message(success/failure)
+     * @return status message(success/failure)
      **/
-    public function InsertMovie(Request $req) {
+    public function InsertMovie(Request $req)
+    {
 
         $movie = new MovieDetail();
-        $movie->name = $req->input('Mname');
-        $movie->duration = $req->input('Duration');
-        $movie->cast_n_crew = $req->input('Cast');
-        $movie->release_date = $req->input('ReleaseDate');
+        $movie->name = $req->input('m_name');
+        $movie->duration = $req->input('duration');
+        $movie->cast_n_crew = $req->input('cast');
+        $movie->release_date = $req->input('release_date');
 
         $movie->save();
 
-        $movieList = MovieDetail::where('name', $req->input('Mname'))->first();
-        $file = $req->file('myfile')->store('movies');
+        $movieList = MovieDetail::where('name', $req->input('m_name'))->first();
+        $file = $req->file('my_file')->store('movies');
 
-        $FileFrom = "/home/zoomrx/application/MovieBuzz/storage/app/" . $file;
-        $FileTo = "/home/zoomrx/application/MovieBuzz/public/images/" . $movieList->id . ".jpg";
+        $FileFrom = self::FILE_IN . $file;
+        $FileTo = self::FILE_OUT . $movieList->id . ".jpg";
 
         rename($FileFrom, $FileTo);
 
@@ -47,14 +54,17 @@ class MovieDetail extends Model
 
             $LanguageMovie->save();
         }
+
         return "success";
     }
+
     /**
      * Function to show the movie details of a movie
      * @param string id from request url
-     * @return  movie details array
+     * @return movie details array
      **/
-    public function ShowMovie($id) {
+    public function showMovie($id)
+    {
 
         $movie = MovieDetail::where('id', $id)->first();
 
@@ -70,13 +80,14 @@ class MovieDetail extends Model
 
         return $movie;
     }
+
     /**
      * Function to  perform updation on movie details 
      * @param string Request from user, movie id
-     * 
+     * @return null
      **/
-
-    public function updateMovie(Request $req, $id) {
+    public function updateMovie(Request $req, $id)
+    {
 
         $movie = MovieDetail::find($id);
 
@@ -101,7 +112,9 @@ class MovieDetail extends Model
             $languages = LanguageMovie::where('movie_id', $id)->get();
 
             foreach ($languages as $lang) {
-                $lang->delete();
+                if (!$lang->delete()) {
+                    Log::debug('unable to delete');
+                }
             }
 
             foreach ($language as $l) {
@@ -115,11 +128,18 @@ class MovieDetail extends Model
         }
     }
 
-    public function filter(Request $req) {
+    /**
+     *Function to  perform filter operation on movie details 
+     *@param string Request from user, movie id
+     *@return movies array
+     **/
+    public function filter(Request $req)
+    {
 
         $language = $req->input('language');
         $movieIds = LanguageMovie::whereIn('language_id', $language)->pluck('movie_id')->toArray();
         $movies = MovieDetail::whereIn('id', $movieIds)->get();
+
         return $movies;
     }
 }

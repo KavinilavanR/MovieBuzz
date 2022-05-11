@@ -27,19 +27,19 @@
                 <div class="login-form">
                     <div class="input-grp">
                         <p>Username</p>
-                        <input type="text" name="Uname" id="uname">
+                        <input type="text" name="name" id="uname">
                     </div>
                     <div class="input-grp">
                         <p>New Password</p>
-                        <input type="password" name="NPass" id="passwd">
+                        <input type="password" name="n_pass" id="passwd">
                     </div>
                     <div class="input-grp">
                         <p>Confirm Password</p>
-                        <input type="password" name="CPass" id="passwd">
+                        <input type="password" name="c_pass" id="passwd">
                     </div>
                     <div class="input-grp">
                         <p>Date Of Birth</p>
-                        <input type="date" name="DOB" id="DOB">
+                        <input type="date" name="dob" id="DOB">
                     </div>
                 </div>
 
