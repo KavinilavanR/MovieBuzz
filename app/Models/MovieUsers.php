@@ -57,7 +57,9 @@ class MovieUsers extends Model
         $user->dob = $req->input('dob');
         $user->admin_access = 0;
 
-        $user->save();
+        if (!$user->save()) {
+            Log::debug('unable to save');
+        }
 
         return "inserted successfully";
     }

@@ -35,7 +35,9 @@ class MovieDetail extends Model
         $movie->cast_n_crew = $req->input('cast');
         $movie->release_date = $req->input('release_date');
 
-        $movie->save();
+        if (!$movie->save()) {
+            Log::debug('unable to save');
+        }
 
         $movieList = MovieDetail::where('name', $req->input('m_name'))->first();
         $file = $req->file('my_file')->store('movies');
@@ -52,7 +54,9 @@ class MovieDetail extends Model
             $LanguageMovie->movie_id = $movieList->id;
             $LanguageMovie->language_id = $l;
 
-            $LanguageMovie->save();
+            if (!$LanguageMovie->save()) {
+                Log::debug('unable to save');
+            }
         }
 
         return "success";
@@ -95,7 +99,10 @@ class MovieDetail extends Model
         $movie->duration = $req->input('duration');
         $movie->release_date = $req->input('release_date');
         $movie->cast_n_crew = $req->input('cast_n_crew');
-        $movie->save();
+
+        if (!$movie->save()) {
+            Log::debug('unable to save');
+        }
 
         if ($req->hasFile('movie_file') == 1) {
             $file = $req->file('movie_file')->store('movies');
@@ -123,7 +130,9 @@ class MovieDetail extends Model
                 $LanguageMovie->movie_id = $movie->id;
                 $LanguageMovie->language_id = $l;
 
-                $LanguageMovie->save();
+                if (!$LanguageMovie->save()) {
+                    Log::debug('unable to save');
+                }
             }
         }
     }

@@ -24,7 +24,7 @@ class CreateMoviebuzzTables extends Migration
 
         Schema::create('languages', function (Blueprint $table) {
             $table->id();
-            $table->string('name');          
+            $table->string('name');
         });
 
         Schema::create('movies', function (Blueprint $table) {
@@ -33,14 +33,12 @@ class CreateMoviebuzzTables extends Migration
             $table->time('duration');
             $table->longText('cast_n_crew');
             $table->date('release_date');
-           
         });
 
         Schema::create('languages_movies', function (Blueprint $table) {
             $table->id();
             $table->integer('movie_id');
             $table->integer('language_id');
-            
         });
     }
 
